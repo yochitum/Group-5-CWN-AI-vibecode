@@ -1,0 +1,14 @@
+const fail=(status,message)=>{throw Object.assign(Error(message),{status});};
+function validateBounds(raw){const b=String(raw||'').split(',').map(Number);if(b.length!==4||!b.every(Number.isFinite))fail(400,'ขอบเขตแผนที่ไม่ถูกต้อง');const [s,w,n,e]=b;if(s<5||n>21||w<97||e>106||s>=n||w>=e||n-s>.16||e-w>.16)fail(400,'กรุณาซูมเข้าในประเทศไทยอีกเพื่อโหลดสถานที่');return b;}
+function mapPlace(e){const t=e.tags||{},p=e.center||e;const name=t['name:th']||t.name||t['name:en'];if(!name||!Number.isFinite(p.lat)||!Number.isFinite(p.lon))return null;const category=t.amenity==='cafe'?'cafe':['restaurant','fast_food','food_court','bar','pub'].includes(t.amenity)?'food':['hotel','hostel','guest_house','motel','resort'].includes(t.tourism)?'hotel':t.shop?'shopping':t.natural||['park','nature_reserve'].includes(t.leisure)?'nature':t.tourism||t.historic||t.amenity==='place_of_worship'?'attraction':'custom';const kind={food:'มื้ออาหาร',cafe:'คาเฟ่',hotel:'พักผ่อน',shopping:'ช้อปปิ้ง',nature:'เที่ยว',attraction:'เที่ยว',custom:'เที่ยว'}[category];return {custom:true,name:name.slice(0,100),lat:p.lat,lng:p.lon,category,kind,type:kind+' · OpenStreetMap',image:2,address:[t['addr:housenumber'],t['addr:street'],t['addr:subdistrict'],t['addr:city']].filter(Boolean).join(' '),sourceUrl:`https://www.openstreetmap.org/${e.type}/${e.id}`};}
+function createDiscovery(fetchImpl=fetch){const cache=new Map();let busy=false,last=0;return async raw=>{
+ const b=validateBounds(raw),key=b.join(','),hit=cache.get(key);if(hit&&Date.now()-hit.time<3600000)return hit.data;
+ if(busy||Date.now()-last<4000)fail(429,'กำลังพักการเรียกข้อมูล รอสักครู่แล้วกดโหลดอีกครั้ง');busy=true;last=Date.now();
+ try{const query=`[out:json][timeout:18];nwr(${key})[~"^(name|name:th|name:en)$"~"."][~"^(amenity|tourism|shop|leisure|natural|historic|office)$"~"."];out center tags 801;`;
+ const url=new URL(process.env.DISCOVERY_OVERPASS_URL||'https://overpass.private.coffee/api/interpreter');url.searchParams.set('data',query);
+ const r=await fetchImpl(url,{headers:{'User-Agent':'ThiaoNaiDee-TeachingPlanner/1.0 (https://github.com/Tiraput-Tirapongtawat/Agent)'},signal:AbortSignal.timeout(23000)});
+ if(!r.ok)fail(503,'บริการหมุดในพื้นที่ไม่พร้อม ลองใหม่ภายหลัง ยังใช้ช่องค้นหาและปักหมุดเองได้');const payload=await r.json();if(payload.remark||!Array.isArray(payload.elements))fail(503,'โหลดหมุดไม่ครบ กรุณาลองซูมเข้าอีก');
+ const data={places:payload.elements.slice(0,800).map(mapPlace).filter(Boolean).filter(p=>p.lat>=b[0]&&p.lat<=b[2]&&p.lng>=b[1]&&p.lng<=b[3]),truncated:payload.elements.length>800};if(cache.size>=60)cache.delete(cache.keys().next().value);cache.set(key,{time:Date.now(),data});return data;
+ }catch(e){if(e.status)throw e;fail(503,'โหลดหมุดในพื้นที่ไม่ทัน กรุณาลองใหม่ภายหลัง');}finally{busy=false;}
+};}
+module.exports={createDiscovery,validateBounds,mapPlace};

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: TC-EXPENSES-01 net shared expenses without losing satang
+not ok 1 - TC-EXPENSES-01 net shared expenses without losing satang
+  ---
+  duration_ms: 4.0395
+  type: 'test'
+  location: '/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M1/backend/expenses.test.cjs:2:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M1/backend/expenses.test.cjs:2:262)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: TC-EXPENSES-02 payer can cover others without joining the split
+ok 2 - TC-EXPENSES-02 payer can cover others without joining the split
+  ---
+  duration_ms: 0.61475
+  type: 'test'
+  ...
+# Subtest: TC-EXPENSES-03 reject unknown people, empty split and fractional satang
+ok 3 - TC-EXPENSES-03 reject unknown people, empty split and fractional satang
+  ---
+  duration_ms: 0.489125
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 75.876792

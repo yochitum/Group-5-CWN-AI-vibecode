@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    image: roam-trip-mockup
+    container_name: roam-trip-mockup
+    ports:
+      - "8080:8080"
+    volumes:
+      - trips-data:/app/backend/data
+    restart: unless-stopped
+volumes:
+  trips-data:

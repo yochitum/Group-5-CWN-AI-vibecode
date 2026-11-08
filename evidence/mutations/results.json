@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-11-07T03:07:18.856Z",
+  "method": "Known source mutation in isolated copies, normal app unchanged",
+  "results": [
+    {
+      "id": "M1",
+      "file": "frontend/expense-core.js",
+      "from": "i<remainder?1:0",
+      "to": "0",
+      "test": "backend/expenses.test.cjs",
+      "fault": "Drop remainder satang from shared expenses",
+      "baselineExit": 0,
+      "mutantExit": 1,
+      "killed": true
+    },
+    {
+      "id": "M2",
+      "file": "backend/selected-plan.cjs",
+      "from": "selected.length>input.days*6",
+      "to": "selected.length>input.days*5",
+      "test": "backend/assessment.test.cjs",
+      "fault": "Reject the allowed sixth visit",
+      "baselineExit": 0,
+      "mutantExit": 1,
+      "killed": true
+    },
+    {
+      "id": "M3",
+      "file": "frontend/feedback-core.js",
+      "from": "proposal.status=decision;",
+      "to": "proposal.status='pending';",
+      "test": "backend/feedback.test.cjs",
+      "fault": "Accepted feedback remains pending",
+      "baselineExit": 0,
+      "mutantExit": 1,
+      "killed": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "roam-trip-mockup",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node backend/server.cjs",
+    "test": "node --test backend/*.test.cjs",
+    "verify": "node assessment/verify.cjs",
+    "test:mutations": "node assessment/mutations.cjs",
+    "start:test": "node assessment/serve.cjs",
+    "report": "node assessment/report.cjs",
+    "docs:check": "node assessment/check-docs.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

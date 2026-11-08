@@ -1,0 +1,9 @@
+backend/data/
+.preview/
+
+# Local credentials (keep the blank template in Git)
+.env
+.env.*
+!.env.example
+
+assessment/.runtime/

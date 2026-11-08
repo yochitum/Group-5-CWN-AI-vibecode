@@ -1,0 +1,67 @@
+TAP version 13
+# Subtest: TC-ASSESSMENT-01 days accept 1 and 4; reject 0, 5 and fractions
+ok 1 - TC-ASSESSMENT-01 days accept 1 and 4; reject 0, 5 and fractions
+  ---
+  duration_ms: 1.561875
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-02 budget accepts 500 and 100000; rejects 499 and 100001
+ok 2 - TC-ASSESSMENT-02 budget accepts 500 and 100000; rejects 499 and 100001
+  ---
+  duration_ms: 0.190458
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-03 six selected visits fit one day; seven are rejected
+not ok 3 - TC-ASSESSMENT-03 six selected visits fit one day; seven are rejected
+  ---
+  duration_ms: 0.799
+  type: 'test'
+  location: '/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M2/backend/assessment.test.cjs:16:1'
+  failureType: 'testCodeFailure'
+  error: 'เลือกได้ไม่เกิน 6 จุดต่อวัน ลองเพิ่มวันหรือลดจุดแวะ'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    invalid (/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M2/backend/server.cjs:11:39)
+    Object.arrangeSelected (/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M2/backend/selected-plan.cjs:4:34)
+    buildPlan (/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M2/backend/server.cjs:66:135)
+    TestContext.<anonymous> (/private/var/folders/x3/0bhmglw52yl96nrs6nxkcdwh0000gn/T/roam-mutations-bh9f1C/M2/backend/assessment.test.cjs:19:15)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: TC-ASSESSMENT-04 member count boundary 99, 100, 101
+ok 4 - TC-ASSESSMENT-04 member count boundary 99, 100, 101
+  ---
+  duration_ms: 0.300208
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-05 expense satang boundaries and integer partition
+ok 5 - TC-ASSESSMENT-05 expense satang boundaries and integer partition
+  ---
+  duration_ms: 0.333084
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-06 test reset is disabled by default and rejects production storage
+ok 6 - TC-ASSESSMENT-06 test reset is disabled by default and rejects production storage
+  ---
+  duration_ms: 36.34575
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-07 isolated reset clears trips and fixes savedAt; invalid clock does not reset
+ok 7 - TC-ASSESSMENT-07 isolated reset clears trips and fixes savedAt; invalid clock does not reset
+  ---
+  duration_ms: 16.189542
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 147.988708

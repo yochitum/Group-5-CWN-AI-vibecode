@@ -1,0 +1,30 @@
+{
+  "scope": "Node unit + API integration; not browser E2E",
+  "normalFailures": [],
+  "injectedDefects": [
+    {
+      "id": "M1",
+      "classification": "intentional mutation",
+      "detected": true,
+      "evidence": "evidence/mutations/M1-mutant.tap"
+    },
+    {
+      "id": "M2",
+      "classification": "intentional mutation",
+      "detected": true,
+      "evidence": "evidence/mutations/M2-mutant.tap"
+    },
+    {
+      "id": "M3",
+      "classification": "intentional mutation",
+      "detected": true,
+      "evidence": "evidence/mutations/M3-mutant.tap"
+    }
+  ],
+  "browserRuns": {
+    "chromium": "NOT_RUN",
+    "firefox": "NOT_RUN",
+    "webkit": "NOT_RUN"
+  },
+  "fullLabExit": "NOT_MET"
+}

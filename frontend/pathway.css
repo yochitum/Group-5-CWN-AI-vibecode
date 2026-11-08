@@ -1,0 +1,19 @@
+.path-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 24px}.path-header strong{font-size:12px;font-weight:500;color:#53634c}
+#trip-wizard{scroll-margin-top:110px}
+.wizard-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0 0 36px;padding:0 4px}
+.wizard-steps .path-step{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 6px;border:0;background:transparent;text-align:center;color:#92988c;isolation:isolate}
+.wizard-steps .path-step:disabled{opacity:1;cursor:default;filter:none}
+.wizard-steps .path-step::before{content:'';position:absolute;left:calc(-50% + 23px);right:calc(50% + 23px);top:22px;height:2px;background:repeating-linear-gradient(to right,#d4d9cc 0 6px,transparent 6px 10px);z-index:-1}
+.wizard-steps .path-step:first-child::before{display:none}
+.wizard-steps .path-step.is-done::before,.wizard-steps .path-step.is-current::before{background:#607857}
+.wizard-steps .path-step span{padding:0;background:none;border-radius:0;color:inherit}
+.wizard-steps .path-node{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:#f4f5ee;border:1px solid #d9dfd0;font:500 16px 'Outfit',sans-serif;color:#9ca491}
+.wizard-steps .is-done .path-node{background:#e1eadb;border-color:#d0dfc6;color:#49683e}
+.wizard-steps .is-current .path-node{background:#293d2e;border:4px solid #eeede6;outline:2px solid #738969;color:#fff;box-shadow:0 3px 9px #2b3b2512}
+.wizard-steps .path-label{font-size:13px;font-weight:500;line-height:1.5}
+.wizard-steps .path-state{font-size:10px;color:#a0a793;line-height:1.4}
+.wizard-steps .is-current .path-label{color:#273c2d}.wizard-steps .is-current .path-state{color:#e66b40}.wizard-steps .is-done .path-state{color:#718666}
+.wizard-steps .path-step:not(:disabled):hover .path-node{background:#cddfc3;transform:translateY(-2px)}
+.wizard-steps .path-node{transition:background .2s,transform .2s}
+@media(max-width:600px){.path-header{align-items:start;flex-direction:column;gap:9px;margin-bottom:22px}.path-header strong{font-size:11px}.wizard-steps{padding:0;margin-bottom:28px}.wizard-steps .path-step{padding:0 2px;gap:7px}.wizard-steps .path-node{width:34px;height:34px;font-size:13px}.wizard-steps .path-step::before{top:17px;left:calc(-50% + 18px);right:calc(50% + 18px)}.wizard-steps .path-label{font-size:10px}.wizard-steps .path-state{font-size:8px}.wizard-steps .is-current .path-node{border-width:3px}}
+@media(prefers-reduced-motion:reduce){.wizard-steps .path-node{transition:none}}

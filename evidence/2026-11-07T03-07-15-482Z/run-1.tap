@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: TC-ASSESSMENT-01 days accept 1 and 4; reject 0, 5 and fractions
+ok 1 - TC-ASSESSMENT-01 days accept 1 and 4; reject 0, 5 and fractions
+  ---
+  duration_ms: 1.969417
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-02 budget accepts 500 and 100000; rejects 499 and 100001
+ok 2 - TC-ASSESSMENT-02 budget accepts 500 and 100000; rejects 499 and 100001
+  ---
+  duration_ms: 0.249708
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-03 six selected visits fit one day; seven are rejected
+ok 3 - TC-ASSESSMENT-03 six selected visits fit one day; seven are rejected
+  ---
+  duration_ms: 2.942459
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-04 member count boundary 99, 100, 101
+ok 4 - TC-ASSESSMENT-04 member count boundary 99, 100, 101
+  ---
+  duration_ms: 0.346084
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-05 expense satang boundaries and integer partition
+ok 5 - TC-ASSESSMENT-05 expense satang boundaries and integer partition
+  ---
+  duration_ms: 0.360125
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-06 test reset is disabled by default and rejects production storage
+ok 6 - TC-ASSESSMENT-06 test reset is disabled by default and rejects production storage
+  ---
+  duration_ms: 48.122417
+  type: 'test'
+  ...
+# Subtest: TC-ASSESSMENT-07 isolated reset clears trips and fixes savedAt; invalid clock does not reset
+ok 7 - TC-ASSESSMENT-07 isolated reset clears trips and fixes savedAt; invalid clock does not reset
+  ---
+  duration_ms: 18.891083
+  type: 'test'
+  ...
+# Subtest: TC-DISCOVERY-01 reject wide, reversed, nonnumeric and outside-region bounds
+ok 8 - TC-DISCOVERY-01 reject wide, reversed, nonnumeric and outside-region bounds
+  ---
+  duration_ms: 1.65725
+  type: 'test'
+  ...
+# Subtest: TC-DISCOVERY-02 map actual POI fields, omit missing names, and classify categories
+ok 9 - TC-DISCOVERY-02 map actual POI fields, omit missing names, and classify categories
+  ---
+  duration_ms: 0.268333
+  type: 'test'
+  ...
+# Subtest: TC-DISCOVERY-03 cache repeated viewport and throttle additional requests
+ok 10 - TC-DISCOVERY-03 cache repeated viewport and throttle additional requests
+  ---
+  duration_ms: 1.092584
+  type: 'test'
+  ...
+# Subtest: TC-DISCOVERY-04 provider failure is an error, never an empty success
+ok 11 - TC-DISCOVERY-04 provider failure is an error, never an empty success
+  ---
+  duration_ms: 0.2695
+  type: 'test'
+  ...
+# Subtest: TC-EXPENSES-01 net shared expenses without losing satang
+ok 12 - TC-EXPENSES-01 net shared expenses without losing satang
+  ---
+  duration_ms: 1.478125
+  type: 'test'
+  ...
+# Subtest: TC-EXPENSES-02 payer can cover others without joining the split
+ok 13 - TC-EXPENSES-02 payer can cover others without joining the split
+  ---
+  duration_ms: 0.169833
+  type: 'test'
+  ...
+# Subtest: TC-EXPENSES-03 reject unknown people, empty split and fractional satang
+ok 14 - TC-EXPENSES-03 reject unknown people, empty split and fractional satang
+  ---
+  duration_ms: 1.261042
+  type: 'test'
+  ...
+# Subtest: TC-FEEDBACK-01 friend cannot accept and rejection preserves main plan
+ok 15 - TC-FEEDBACK-01 friend cannot accept and rejection preserves main plan
+  ---
+  duration_ms: 2.071583
+  type: 'test'
+  ...
+# Subtest: TC-FEEDBACK-02 accept moves once before end anchor; duplicate action blocked
+ok 16 - TC-FEEDBACK-02 accept moves once before end anchor; duplicate action blocked
+  ---
+  duration_ms: 0.187875
+  type: 'test'
+  ...
+# Subtest: TC-FEEDBACK-03 stale or full destination leaves plan and status unchanged
+ok 17 - TC-FEEDBACK-03 stale or full destination leaves plan and status unchanged
+  ---
+  duration_ms: 0.164667
+  type: 'test'
+  ...
+# Subtest: TC-FEEDBACK-04 accepted new restaurant is added, comments never modify itinerary
+ok 18 - TC-FEEDBACK-04 accepted new restaurant is added, comments never modify itinerary
+  ---
+  duration_ms: 0.177459
+  type: 'test'
+  ...
+# Subtest: TC-INVITE-01 invitation includes daily plan, meeting, details and free days
+ok 19 - TC-INVITE-01 invitation includes daily plan, meeting, details and free days
+  ---
+  duration_ms: 26.212875
+  type: 'test'
+  ...
+# Subtest: TC-INVITE-02 planning validation preserves invitation and rejects invalid group size
+ok 20 - TC-INVITE-02 planning validation preserves invitation and rejects invalid group size
+  ---
+  duration_ms: 0.85425
+  type: 'test'
+  ...
+# Subtest: TC-MEMBERS-01 supports all RSVP groups and older trips without members
+ok 21 - TC-MEMBERS-01 supports all RSVP groups and older trips without members
+  ---
+  duration_ms: 1.387375
+  type: 'test'
+  ...
+# Subtest: TC-MEMBERS-02 rejects invalid status, duplicate ID and excessive list
+ok 22 - TC-MEMBERS-02 rejects invalid status, duplicate ID and excessive list
+  ---
+  duration_ms: 1.20125
+  type: 'test'
+  ...
+# Subtest: TC-ROAD-MAP-01 rejects old schematic backend before drawing
+ok 23 - TC-ROAD-MAP-01 rejects old schematic backend before drawing
+  ---
+  duration_ms: 4.860375
+  type: 'test'
+  ...
+# Subtest: TC-ROAD-MAP-02 road route works without optional waypoints
+ok 24 - TC-ROAD-MAP-02 road route works without optional waypoints
+  ---
+  duration_ms: 0.669542
+  type: 'test'
+  ...
+# Subtest: TC-ROAD-MAP-03 invalid road coordinates fail before rendering
+ok 25 - TC-ROAD-MAP-03 invalid road coordinates fail before rendering
+  ---
+  duration_ms: 3.269875
+  type: 'test'
+  ...
+# Subtest: TC-ROAD-MAP-04 arrow heading follows east north west south
+ok 26 - TC-ROAD-MAP-04 arrow heading follows east north west south
+  ---
+  duration_ms: 0.835542
+  type: 'test'
+  ...
+# Subtest: TC-ROUTING-01 road coordinates are converted, metrics preserved and cached
+ok 27 - TC-ROUTING-01 road coordinates are converted, metrics preserved and cached
+  ---
+  duration_ms: 1.566458
+  type: 'test'
+  ...
+# Subtest: TC-ROUTING-02 upstream failure never produces a mock road
+ok 28 - TC-ROUTING-02 upstream failure never produces a mock road
+  ---
+  duration_ms: 0.546375
+  type: 'test'
+  ...
+# Subtest: TC-SELECTED-PLAN-01 selected places appear exactly once and daily hotel boundaries are correct
+ok 29 - TC-SELECTED-PLAN-01 selected places appear exactly once and daily hotel boundaries are correct
+  ---
+  duration_ms: 2.559292
+  type: 'test'
+  ...
+# Subtest: TC-SELECTED-PLAN-02 one selected place with four days produces free days without duplicates
+ok 30 - TC-SELECTED-PLAN-02 one selected place with four days produces free days without duplicates
+  ---
+  duration_ms: 0.216334
+  type: 'test'
+  ...
+# Subtest: TC-SELECTED-PLAN-03 rejects missing selections and excessive daily capacity
+ok 31 - TC-SELECTED-PLAN-03 rejects missing selections and excessive daily capacity
+  ---
+  duration_ms: 0.903666
+  type: 'test'
+  ...
+# Subtest: TC-SERVER-01 plan, route, validation, static frontend and persistent trips
+ok 32 - TC-SERVER-01 plan, route, validation, static frontend and persistent trips
+  ---
+  duration_ms: 65.332167
+  type: 'test'
+  ...
+# Subtest: TC-TRIP-MANAGEMENT-01 named trips update in place, retain place metadata, and delete
+ok 33 - TC-TRIP-MANAGEMENT-01 named trips update in place, retain place metadata, and delete
+  ---
+  duration_ms: 47.132209
+  type: 'test'
+  ...
+# Subtest: TC-TRIP-SLIDES-01 deck contains overview, all days and continuation slides without dropping stops
+ok 34 - TC-TRIP-SLIDES-01 deck contains overview, all days and continuation slides without dropping stops
+  ---
+  duration_ms: 14.426834
+  type: 'test'
+  ...
+# Subtest: TC-TRIP-SLIDES-02 export escapes user text and rejects non-image photo sources
+ok 35 - TC-TRIP-SLIDES-02 export escapes user text and rejects non-image photo sources
+  ---
+  duration_ms: 0.247625
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 241.394375

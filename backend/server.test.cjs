@@ -1,0 +1,43 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const os=require('node:os');
+const path=require('node:path');
+const {createServer}=require('./server.cjs');
+test('TC-SERVER-01 plan, route, validation, static frontend and persistent trips',async()=>{
+ const routeFetch=async()=>({ok:true,json:async()=>({code:'Ok',routes:[{geometry:{coordinates:[[98.9216,18.8048],[98.9527,18.8053]]},distance:8000,duration:900,legs:[{distance:8000,duration:900}]}],waypoints:[]})});
+ const temp=fs.mkdtempSync(path.join(os.tmpdir(),'roam-test-'));const dataFile=path.join(temp,'trips.json');let server=createServer({dataFile,routeFetch});
+ const listen=()=>new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));await listen();let base=`http://127.0.0.1:${server.address().port}`;
+ const post=(url,body)=>fetch(base+url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ try{
+  assert.equal((await fetch(base+'/')).status,200);
+  assert.equal((await fetch(base+'/app.js')).status,200);
+  assert.equal((await fetch(base+'/backend/server.cjs')).status,404);
+  const input={destination:'เชียงใหม่',origin:'เชียงใหม่',days:3,budget:5000,interests:['↟ ธรรมชาติ']};
+  const response=await post('/api/plan',input);assert.equal(response.status,200);const trip=await response.json();assert.equal(trip.plans.length,3);assert.match(trip.plans[0][0].type,/ธรรมชาติ/);
+  const route=await (await post('/api/route',{stops:trip.plans[0]})).json();assert.equal(route.mode,'road');assert.deepEqual(route.points[0],[18.8048,98.9216]);assert.equal(route.minutes,15);
+  assert.equal((await post('/api/plan',{...input,days:0})).status,400);
+  assert.equal((await post('/api/plan',{...input,destination:'ไม่มี'})).status,400);
+  assert.equal((await post('/api/route',{stops:[]})).status,400);
+  assert.equal((await post('/api/trips',{...trip,plans:[]})).status,400);
+  trip.plans[0][0].photo='data:image/jpeg;base64,/9j/2Q==';
+  trip.plans[0][0].stopId='persistent-stop';
+  trip.members=[{id:'friend-1',name:'มายด์',status:'maybe',note:'รอเช็กวันลา'}];
+  trip.expenses=[{id:'expense-1',title:'ค่าอาหาร',date:'2026-11-06',amountSatang:12345,payer:'friend-1',participants:['friend-1']}];
+  trip.feedback=[{id:'comment-1',author:'เพื่อน',message:'อยากแวะกินข้าวด้วย',action:'comment',targetDay:0,status:'pending',createdAt:123}];
+  trip.plans[0][0].details={buy:'กาแฟ 2 ถุง',eat:'ข้าวซอย',explore:'มุมด้านหลัง',notes:'จองโต๊ะแล้ว',arrival:'12:30',duration:60,cost:250};
+  const lunch={custom:true,name:'ร้านมื้อเที่ยง',kind:'มื้ออาหาร',lat:18.79,lng:98.99,details:{eat:'เมนูประจำร้าน',arrival:'13:00'}};
+  trip.plans[0].splice(1,0,lunch);
+  assert.equal((await post('/api/route',{stops:trip.plans[0]})).status,200);
+  const badCoordinates=structuredClone(trip);badCoordinates.plans[0][1].lat=100;
+  assert.equal((await post('/api/trips',badCoordinates)).status,400);
+  const badDetails=structuredClone(trip);badDetails.plans[0][0].details.arrival='25:90';
+  assert.equal((await post('/api/trips',badDetails)).status,400);
+  assert.equal((await post('/api/trips',{...trip,plans:trip.plans.map(stops=>stops.map(s=>({...s,photo:'javascript:alert(1)'})))})).status,400);
+  assert.equal((await post('/api/trips',trip)).status,201);
+  await new Promise(resolve=>server.close(resolve));server=createServer({dataFile});await listen();base=`http://127.0.0.1:${server.address().port}`;
+  const saved=await (await fetch(base+'/api/trips')).json();assert.equal(saved.length,1);assert.equal(saved[0].destination,'เชียงใหม่');assert.equal(saved[0].plans[0][0].photo,trip.plans[0][0].photo);assert.deepEqual(saved[0].plans[0][0].details,trip.plans[0][0].details);assert.equal(saved[0].plans[0][1].name,lunch.name);assert.equal(saved[0].plans[0][1].custom,true);assert.equal(saved[0].plans[0][1].details.eat,lunch.details.eat);
+  assert.equal(saved[0].plans[0][0].stopId,'persistent-stop');assert.deepEqual(saved[0].feedback,trip.feedback);assert.deepEqual(saved[0].members,trip.members);assert.deepEqual(saved[0].expenses,trip.expenses);
+  const selectedResponse=await post('/api/plan',{...input,days:4,selected:[trip.plans[0][0]],start:trip.plans[0][0],end:trip.plans[0][2],returnDaily:true,restaurantSkipped:true});assert.equal(selectedResponse.status,200);const selected=await selectedResponse.json();assert.equal(selected.plans[3].length,0);assert.equal((await post('/api/trips',selected)).status,201);const restored=await (await fetch(base+'/api/trips')).json();assert.equal(restored[0].setup.returnDaily,true);assert.equal(restored[0].plans[3].length,0);
+ }finally{await new Promise(resolve=>server.close(resolve));fs.rmSync(temp,{recursive:true,force:true});}
+});

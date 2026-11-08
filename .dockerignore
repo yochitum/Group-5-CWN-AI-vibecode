@@ -1,0 +1,9 @@
+node_modules
+.git
+.env
+.env.*
+!.env.example
+backend/data
+assessment/.runtime
+evidence
+.preview

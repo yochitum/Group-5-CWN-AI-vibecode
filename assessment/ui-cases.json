@@ -1,0 +1,57 @@
+[
+  {
+    "id": "TC-UI-01",
+    "priority": "P1",
+    "status": "NOT_RUN",
+    "scope": "Browser E2E; see TEST-PLAN.md",
+    "browsers": {
+      "chromium": "NOT_RUN",
+      "firefox": "NOT_RUN",
+      "webkit": "NOT_RUN"
+    }
+  },
+  {
+    "id": "TC-UI-02",
+    "priority": "P1",
+    "status": "NOT_RUN",
+    "scope": "Browser E2E; see TEST-PLAN.md",
+    "browsers": {
+      "chromium": "NOT_RUN",
+      "firefox": "NOT_RUN",
+      "webkit": "NOT_RUN"
+    }
+  },
+  {
+    "id": "TC-UI-03",
+    "priority": "P1",
+    "status": "NOT_RUN",
+    "scope": "Browser E2E; see TEST-PLAN.md",
+    "browsers": {
+      "chromium": "NOT_RUN",
+      "firefox": "NOT_RUN",
+      "webkit": "NOT_RUN"
+    }
+  },
+  {
+    "id": "TC-UI-04",
+    "priority": "P1",
+    "status": "NOT_RUN",
+    "scope": "Browser E2E; see TEST-PLAN.md",
+    "browsers": {
+      "chromium": "NOT_RUN",
+      "firefox": "NOT_RUN",
+      "webkit": "NOT_RUN"
+    }
+  },
+  {
+    "id": "TC-UI-05",
+    "priority": "P2",
+    "status": "NOT_RUN",
+    "scope": "Browser E2E; see TEST-PLAN.md",
+    "browsers": {
+      "chromium": "NOT_RUN",
+      "firefox": "NOT_RUN",
+      "webkit": "NOT_RUN"
+    }
+  }
+]

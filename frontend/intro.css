@@ -1,0 +1,24 @@
+html.intro-active{overflow:hidden}
+.travel-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#faf9f6;isolation:isolate;opacity:1;transition:opacity .55s ease,visibility .55s;overflow:hidden}
+.intro-orbit{--radius:clamp(115px,22vmin,230px);position:absolute;left:50%;top:47%;width:0;height:0;animation:intro-orbit-turn 3.2s cubic-bezier(.22,.65,.25,1) both}
+.intro-photo-slot{position:absolute;left:-36px;top:-44px;width:72px;height:88px;border-radius:4px;background:linear-gradient(155deg,#bce0e0 0 44%,#7a9d70 45% 66%,#ced6b1 67%);box-shadow:0 6px 18px #242b2026;transform:rotate(var(--angle)) translateY(calc(-1 * var(--radius))) rotate(calc(-1 * var(--angle) + var(--tilt)));overflow:hidden}
+.intro-photo-slot img{width:100%;height:100%;object-fit:cover;display:block}.intro-photo-slot img[hidden]{display:none}
+.intro-photo-slot:nth-child(3n){width:65px;height:76px}.intro-photo-slot:nth-child(4n){border-radius:50%;width:72px;height:72px}
+.intro-center{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);text-align:center;animation:intro-word-in .9s .3s both}
+.intro-center>span{font:700 35px 'Outfit',sans-serif;letter-spacing:-2px;color:#29372e}.intro-dot{color:#f15b3c;font-size:11px;margin-left:3px}.intro-center small{display:block;font:8px 'Outfit',sans-serif;letter-spacing:1.6px;color:#8a9287;margin-top:7px}
+.intro-note{position:absolute;bottom:10%;font-size:12px;color:#8d9288;margin:0 20px;text-align:center;animation:intro-word-in 1s .3s both}
+.intro-skip{position:absolute;right:35px;bottom:30px;border:1px solid #dedfd5;background:#fff9;border-radius:25px;padding:10px 17px;color:#646e5e;font:12px 'Noto Sans Thai',sans-serif;cursor:pointer}
+.travel-intro.intro-leaving{opacity:0;visibility:hidden}
+@keyframes intro-orbit-turn{0%{transform:rotate(-95deg) scale(.5);opacity:0}18%{opacity:1}80%{opacity:1}100%{transform:rotate(100deg) scale(1);opacity:1}}
+@keyframes intro-word-in{from{opacity:0;filter:blur(5px)}to{opacity:1;filter:none}}
+@media(max-width:600px){.intro-photo-slot{left:-25px;top:-32px;width:50px;height:64px}.intro-photo-slot:nth-child(3n){width:47px;height:58px}.intro-photo-slot:nth-child(4n){width:50px;height:50px}.intro-center>span{font-size:28px}.intro-center small{font-size:6px;letter-spacing:1px}.intro-skip{right:18px;bottom:20px}.intro-note{bottom:15%;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.travel-intro,.intro-orbit,.intro-center,.intro-note{animation:none!important;transition:none!important}}
+.intro-center>span{font-family:"Noto Sans Thai",sans-serif;font-size:25px;font-weight:700;letter-spacing:-.5px;white-space:nowrap}@media(max-width:600px){.intro-center>span{font-size:19px}}
+
+/* Keep rotating photos on a stable layer and reveal them together. */
+.intro-orbit{will-change:transform;backface-visibility:hidden}
+.intro-photo-slot{backface-visibility:hidden}
+.intro-photo-slot img{opacity:0;transition:opacity .35s ease}
+.intro-photo-slot img.intro-photo-ready{opacity:1}
+@keyframes intro-word-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.intro-photo-slot img{transition:none}}

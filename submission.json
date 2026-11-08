@@ -1,0 +1,295 @@
+{
+  "schema_version": 2,
+  "project_id": "teaw-naidee-original",
+  "path_base": "directory containing submission.json",
+  "assignment_reference": "../00_week01/04_sabai-spa-web-and-testplan-from-interview/README.md",
+  "review_entry": "REVIEW-INDEX.md",
+  "rubric_map": "RUBRIC-MAP.md",
+  "assessment_status": "NOT_GRADED",
+  "full_lab_exit": "NOT_MET",
+  "documentation_scope": "Retrospective documents with actual isolated Node/API tests; not a blind original workflow",
+  "labs": [
+    {
+      "lab_id": "LAB-00",
+      "title": "เครื่องมือ",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "LAB0.md",
+        "package.json"
+      ],
+      "missing_deliverables": [
+        "ไม่มี browser installation/run evidence"
+      ]
+    },
+    {
+      "lab_id": "LAB-01",
+      "title": "Interview / User Stories",
+      "status": "DOCUMENTED_RETROSPECTIVE",
+      "artifact_paths": [
+        "INTERVIEW.md",
+        "USER-STORIES.md"
+      ],
+      "missing_deliverables": [
+        "policy[A]ยังต้องผู้ใช้ยืนยัน; ไม่ใช่interviewใหม่"
+      ]
+    },
+    {
+      "lab_id": "LAB-02",
+      "title": "FR / BR / NFR",
+      "status": "DOCUMENTED_RETROSPECTIVE",
+      "artifact_paths": [
+        "REQUIREMENTS.md"
+      ],
+      "missing_deliverables": [
+        "numeric policyยังไม่ใช่[D]"
+      ]
+    },
+    {
+      "lab_id": "LAB-03",
+      "title": "Design",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "DESIGN.md"
+      ],
+      "missing_deliverables": [
+        "Mermaidยังไม่มีrender proof"
+      ]
+    },
+    {
+      "lab_id": "LAB-04",
+      "title": "Test data",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "TEST-DATA.md"
+      ],
+      "missing_deliverables": [
+        "ไม่มีPostgresseed; ไม่ได้executeทุกboundarytriple"
+      ]
+    },
+    {
+      "lab_id": "LAB-05",
+      "title": "Build prompt",
+      "status": "DOCUMENTED_RETROSPECTIVE",
+      "artifact_paths": [
+        "BUILD-PROMPT.md"
+      ],
+      "missing_deliverables": [
+        "ไม่ใช่promptที่ใช้เริ่มพัฒนาจริง"
+      ]
+    },
+    {
+      "lab_id": "LAB-06",
+      "title": "Implementation",
+      "status": "ADAPTED",
+      "artifact_paths": [
+        "SPEC.md",
+        "backend/server.cjs",
+        "assessment/serve.cjs",
+        "frontend/index.html"
+      ],
+      "missing_deliverables": [
+        "ไม่มีNext/Postgres/Dockerสองโปรเจกต์ตามโจทย์"
+      ]
+    },
+    {
+      "lab_id": "LAB-07",
+      "title": "Exploration A/B/D",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "EXPLORATION.md"
+      ],
+      "missing_deliverables": [
+        "code-informed; ไม่ใช่blind UI exploration"
+      ]
+    },
+    {
+      "lab_id": "LAB-08",
+      "title": "Exploration C/E/F",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "EXPLORATION.md"
+      ],
+      "missing_deliverables": [
+        "[O]จำกัดNode/API; ไม่มีvisualobservation"
+      ]
+    },
+    {
+      "lab_id": "LAB-09",
+      "title": "Test plan1–5 / run",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "TEST-PLAN.md",
+        "TEST-RUN-1.md",
+        "assessment/cases.json"
+      ],
+      "missing_deliverables": [
+        "5UIcasesยังNOT_RUN"
+      ]
+    },
+    {
+      "lab_id": "LAB-10",
+      "title": "Test plan6–8 / review",
+      "status": "DOCUMENTED_RETROSPECTIVE",
+      "artifact_paths": [
+        "TEST-PLAN.md",
+        "PLAN-REVIEW.md"
+      ],
+      "missing_deliverables": [
+        "FullbrowserExitยังNOT_MET"
+      ]
+    },
+    {
+      "lab_id": "LAB-11",
+      "title": "Automated evidence",
+      "status": "PARTIAL",
+      "artifact_paths": [
+        "assessment/verify.cjs",
+        "evidence/latest.json",
+        "evidence/index.html",
+        "evidence/triage.json"
+      ],
+      "missing_deliverables": [
+        "ไม่มีPlaywright3browser/GIF/MP4"
+      ]
+    },
+    {
+      "lab_id": "LAB-12",
+      "title": "Bug hunt",
+      "status": "ADAPTED",
+      "artifact_paths": [
+        "BUG-HUNT.md",
+        "assessment/mutations.cjs",
+        "evidence/mutations/results.json"
+      ],
+      "missing_deliverables": [
+        "knownsource mutations ไม่ใช่blind BUG_MODE"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "R01",
+      "artifact": "USER-STORIES.md",
+      "limitation": "มี11USและAC; scope[A]ต้องยืนยัน"
+    },
+    {
+      "id": "R02",
+      "artifact": "REQUIREMENTS.md",
+      "limitation": "มีtriple/partitionsและtrace; ไม่ได้executeทุกค่า"
+    },
+    {
+      "id": "R03",
+      "artifact": "DESIGN.md",
+      "limitation": "ครบ5ชนิด7แผนภาพ; ยังไม่มีrenderproof"
+    },
+    {
+      "id": "R04",
+      "artifact": "TEST-DATA.md",
+      "limitation": "fixedsavedAt+สูตรเงิน; ไม่ใช่spatier/Postgresseed"
+    },
+    {
+      "id": "R05",
+      "artifact": "BUILD-PROMPT.md",
+      "limitation": "มีreproductionpromptย้อนหลัง"
+    },
+    {
+      "id": "R06",
+      "artifact": "SPEC.md",
+      "limitation": "ADAPTED: Node+JSON; ไม่ครบสองDockerprojects"
+    },
+    {
+      "id": "R07",
+      "artifact": "BUG-HUNT.md",
+      "limitation": "ไม่มีblindworkflow; ไม่อ้างคะแนนข้อนี้"
+    },
+    {
+      "id": "R08",
+      "artifact": "EXPLORATION.md",
+      "limitation": "retrospective; ไม่อ้างลำดับก่อนเปิดเว็บ"
+    },
+    {
+      "id": "R09",
+      "artifact": "EXPLORATION.md",
+      "limitation": "มีครบป้าย; Oเป็นNode/APIไม่ใช่visual"
+    },
+    {
+      "id": "R10",
+      "artifact": "EXPLORATION.md",
+      "limitation": "มีD3ประเภทและFผู้ใช้/ผู้สร้าง"
+    },
+    {
+      "id": "R11",
+      "artifact": "PLAN-REVIEW.md",
+      "limitation": "ทุกBRมีcase; FR11UIค้างและpartialfeaturecoverage"
+    },
+    {
+      "id": "R12",
+      "artifact": "TEST-PLAN.md",
+      "limitation": "มี6เทคนิค; ยังขาดUInegativeบางfeature"
+    },
+    {
+      "id": "R13",
+      "artifact": "TEST-DATA.md",
+      "limitation": "ตัวเลขชัด; caseindexมีexpected"
+    },
+    {
+      "id": "R14",
+      "artifact": "assessment/cases.json",
+      "limitation": "มีRreasoningแต่policyAยังไม่ยืนยัน; ไม่อ้างครบเกณฑ์"
+    },
+    {
+      "id": "R15",
+      "artifact": "BUG-HUNT.md",
+      "limitation": "mutationใช้oracleเดิม; ไม่มีhistoricalblindproof"
+    },
+    {
+      "id": "R16",
+      "artifact": "TEST-PLAN.md",
+      "limitation": "เกณฑ์วัดได้;8failurepredictions"
+    },
+    {
+      "id": "R17",
+      "artifact": "TEST-PLAN.md",
+      "limitation": "ทันที/หลังserverrestart; browserreloadNOT_RUN"
+    },
+    {
+      "id": "R18",
+      "artifact": "TEST-RUN-1.md",
+      "limitation": "NOT_RUN; Node2รอบไม่ใช่browser"
+    },
+    {
+      "id": "R19",
+      "artifact": "evidence/triage.json",
+      "limitation": "มีNode/mutationtriage; GIF0 MP40"
+    },
+    {
+      "id": "R20",
+      "artifact": "BUG-HUNT.md",
+      "limitation": "knownmutation3/3; ยังไม่เท่ากับblindBUG_MODE"
+    }
+  ],
+  "run": {
+    "start": "npm start",
+    "verify": "npm run verify",
+    "mutations": "npm run test:mutations",
+    "report": "npm run report",
+    "docs_check": "npm run docs:check",
+    "url": "http://localhost:8080"
+  },
+  "evidence": {
+    "latest": "evidence/latest.json",
+    "mutations": "evidence/mutations/results.json",
+    "html": "evidence/index.html",
+    "triage": "evidence/triage.json",
+    "case_index": "assessment/cases.json",
+    "browser_case_index": "assessment/ui-cases.json"
+  },
+  "limitations": [
+    "Node tests are not browser tests.",
+    "No Docker two-project implementation.",
+    "Known mutation is not blind BUG_MODE.",
+    "Numeric policies inferred from source require owner confirmation.",
+    "No Mermaid rendering proof or GIF/MP4.",
+    "Photo replay and map readability have no visual verification."
+  ]
+}

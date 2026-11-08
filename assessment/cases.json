@@ -1,0 +1,601 @@
+[
+  {
+    "id": "TC-ASSESSMENT-01",
+    "title": "days accept 1 and 4; reject 0, 5 and fractions",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-01"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "1/4 วันผ่าน; 0/5/1.5 ถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-02",
+    "title": "budget accepts 500 and 100000; rejects 499 and 100001",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-02"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "500/100000 ผ่าน; 499/100001/NaN ถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-03",
+    "title": "six selected visits fit one day; seven are rejected",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-03"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "6 จุดต่อวันผ่าน; 7 จุดถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-04",
+    "title": "member count boundary 99, 100, 101",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-06"
+    ],
+    "rules": [
+      "BR-04"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "99/100 คนผ่าน; 101 คนถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-05",
+    "title": "expense satang boundaries and integer partition",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-08"
+    ],
+    "rules": [
+      "BR-05"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "1..100000000 สตางค์ผ่าน; 0/100000001/1.5 ถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-06",
+    "title": "test reset is disabled by default and rejects production storage",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-10"
+    ],
+    "rules": [
+      "BR-10"
+    ],
+    "technique": "Security/API",
+    "priority": "P1",
+    "expected": "reset ปกติได้ 404; ห้ามเปิด reset บนไฟล์ข้อมูลหลัก",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ASSESSMENT-07",
+    "title": "isolated reset clears trips and fixes savedAt; invalid clock does not reset",
+    "file": "backend/assessment.test.cjs",
+    "requirements": [
+      "FR-10"
+    ],
+    "rules": [
+      "BR-10"
+    ],
+    "technique": "State",
+    "priority": "P1",
+    "expected": "reset ล้างข้อมูลทดสอบ; savedAt เท่ากับเวลาล็อก; เวลาผิดไม่ล้างข้อมูล",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-DISCOVERY-01",
+    "title": "reject wide, reversed, nonnumeric and outside-region bounds",
+    "file": "backend/discovery.test.cjs",
+    "requirements": [
+      "FR-09"
+    ],
+    "rules": [
+      "BR-11"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "bbox กว้าง/กลับด้าน/นอกพื้นที่/ไม่ใช่ตัวเลขถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-DISCOVERY-02",
+    "title": "map actual POI fields, omit missing names, and classify categories",
+    "file": "backend/discovery.test.cjs",
+    "requirements": [
+      "FR-09"
+    ],
+    "rules": [
+      "BR-11"
+    ],
+    "technique": "Equivalence",
+    "priority": "P1",
+    "expected": "แปลง POI มีชื่อ; ข้ามรายการไม่มีชื่อ; แยกหมวด",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-DISCOVERY-03",
+    "title": "cache repeated viewport and throttle additional requests",
+    "file": "backend/discovery.test.cjs",
+    "requirements": [
+      "FR-09"
+    ],
+    "rules": [
+      "BR-11"
+    ],
+    "technique": "State",
+    "priority": "P1",
+    "expected": "viewport ซ้ำใช้ cache; คำขอใหม่ที่ถี่เกินได้ 429",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-DISCOVERY-04",
+    "title": "provider failure is an error, never an empty success",
+    "file": "backend/discovery.test.cjs",
+    "requirements": [
+      "FR-09"
+    ],
+    "rules": [
+      "BR-11"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "provider ล่มได้ 503 ไม่ใช่ผลสำเร็จว่าง",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-EXPENSES-01",
+    "title": "net shared expenses without losing satang",
+    "file": "backend/expenses.test.cjs",
+    "requirements": [
+      "FR-08"
+    ],
+    "rules": [
+      "BR-06"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "รวม 13000; a=5666 b=-1333 c=-4333; โอนแล้วทุกยอด=0",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-EXPENSES-02",
+    "title": "payer can cover others without joining the split",
+    "file": "backend/expenses.test.cjs",
+    "requirements": [
+      "FR-08"
+    ],
+    "rules": [
+      "BR-06"
+    ],
+    "technique": "Equivalence",
+    "priority": "P1",
+    "expected": "a จ่าย 500 ให้ b: b คืน a 500",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-EXPENSES-03",
+    "title": "reject unknown people, empty split and fractional satang",
+    "file": "backend/expenses.test.cjs",
+    "requirements": [
+      "FR-08"
+    ],
+    "rules": [
+      "BR-05"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "คนไม่รู้จัก/ไม่เลือกคนหาร/เศษสตางค์/คนซ้ำถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-FEEDBACK-01",
+    "title": "friend cannot accept and rejection preserves main plan",
+    "file": "backend/feedback.test.cjs",
+    "requirements": [
+      "FR-07"
+    ],
+    "rules": [
+      "BR-07"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "friend ตัดสินไม่ได้; reject คงแผนและสถานะเป็น rejected",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-FEEDBACK-02",
+    "title": "accept moves once before end anchor; duplicate action blocked",
+    "file": "backend/feedback.test.cjs",
+    "requirements": [
+      "FR-07"
+    ],
+    "rules": [
+      "BR-07"
+    ],
+    "technique": "State",
+    "priority": "P1",
+    "expected": "accept ย้ายครั้งเดียวก่อน end; accept ซ้ำถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-FEEDBACK-03",
+    "title": "stale or full destination leaves plan and status unchanged",
+    "file": "backend/feedback.test.cjs",
+    "requirements": [
+      "FR-07"
+    ],
+    "rules": [
+      "BR-07"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "ต้นทางหายหรือปลายทางเต็ม: แผนและ pending ไม่เปลี่ยน",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-FEEDBACK-04",
+    "title": "accepted new restaurant is added, comments never modify itinerary",
+    "file": "backend/feedback.test.cjs",
+    "requirements": [
+      "FR-07"
+    ],
+    "rules": [
+      "BR-07"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "accept add เพิ่มร้าน; accept comment ไม่แก้แผน",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-INVITE-01",
+    "title": "invitation includes daily plan, meeting, details and free days",
+    "file": "backend/invite.test.cjs",
+    "requirements": [
+      "FR-05"
+    ],
+    "rules": [
+      "BR-08"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "ข้อความมี 01/12/2026, 4 คน, สถานี 08:00, วันอิสระ และไม่มี localhost",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-INVITE-02",
+    "title": "planning validation preserves invitation and rejects invalid group size",
+    "file": "backend/invite.test.cjs",
+    "requirements": [
+      "FR-05"
+    ],
+    "rules": [
+      "BR-08"
+    ],
+    "technique": "Boundary",
+    "priority": "P1",
+    "expected": "ข้อมูลเชิญ 4 คนคงเดิม; 0 คนถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-MEMBERS-01",
+    "title": "supports all RSVP groups and older trips without members",
+    "file": "backend/members.test.cjs",
+    "requirements": [
+      "FR-06"
+    ],
+    "rules": [
+      "BR-04"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "going/interested/maybe ผ่าน; trim ข้อความ; ไม่มีสมาชิกได้ []",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-MEMBERS-02",
+    "title": "rejects invalid status, duplicate ID and excessive list",
+    "file": "backend/members.test.cjs",
+    "requirements": [
+      "FR-06"
+    ],
+    "rules": [
+      "BR-04"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "สถานะผิด/ID ซ้ำ/ชื่อว่าง/101 รายการถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROAD-MAP-01",
+    "title": "rejects old schematic backend before drawing",
+    "file": "backend/road-map.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "schematic ถูกปฏิเสธก่อนวาด",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROAD-MAP-02",
+    "title": "road route works without optional waypoints",
+    "file": "backend/road-map.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "ไม่มี optional waypoints ยังได้ระยะเริ่ม0และปลาย>0",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROAD-MAP-03",
+    "title": "invalid road coordinates fail before rendering",
+    "file": "backend/road-map.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "พิกัดว่าง/null/latitude999 ถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROAD-MAP-04",
+    "title": "arrow heading follows east north west south",
+    "file": "backend/road-map.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Equivalence",
+    "priority": "P1",
+    "expected": "ทิศ E=0 N=-90 W=±180 S=90 องศา",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROUTING-01",
+    "title": "road coordinates are converted, metrics preserved and cached",
+    "file": "backend/routing.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "12345m→12.3km;1200s→20min; lon/lat สลับถูก; เรียก provider ครั้งเดียว",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-ROUTING-02",
+    "title": "upstream failure never produces a mock road",
+    "file": "backend/routing.test.cjs",
+    "requirements": [
+      "FR-02"
+    ],
+    "rules": [
+      "BR-09"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "offline/HTTP error/NoRoute ได้ 502 ไม่สร้างถนนปลอม",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-SELECTED-PLAN-01",
+    "title": "selected places appear exactly once and daily hotel boundaries are correct",
+    "file": "backend/selected-plan.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-03"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "5 จุดที่เลือกปรากฏอย่างละ1ครั้ง; hotel เป็น end ทุกวัน",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-SELECTED-PLAN-02",
+    "title": "one selected place with four days produces free days without duplicates",
+    "file": "backend/selected-plan.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-03"
+    ],
+    "technique": "Equivalence",
+    "priority": "P1",
+    "expected": "1 จุด4วัน: วันแรก3จุดรวม anchors; อีก3วันเป็น []",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-SELECTED-PLAN-03",
+    "title": "rejects missing selections and excessive daily capacity",
+    "file": "backend/selected-plan.test.cjs",
+    "requirements": [
+      "FR-01"
+    ],
+    "rules": [
+      "BR-03"
+    ],
+    "technique": "Negative",
+    "priority": "P1",
+    "expected": "ไม่มีจุดเลือกและเกิน6ต่อวันถูกปฏิเสธ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-SERVER-01",
+    "title": "plan, route, validation, static frontend and persistent trips",
+    "file": "backend/server.test.cjs",
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04"
+    ],
+    "rules": [
+      "BR-01",
+      "BR-02",
+      "BR-12"
+    ],
+    "technique": "Security/API",
+    "priority": "P1",
+    "expected": "API plan/save/route ผ่าน; validation ปฏิเสธ; รูปและรายละเอียดคงอยู่หลัง restart; backend file ไม่เปิดเผย",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-TRIP-MANAGEMENT-01",
+    "title": "named trips update in place, retain place metadata, and delete",
+    "file": "backend/trip-management.test.cjs",
+    "requirements": [
+      "FR-04"
+    ],
+    "rules": [
+      "BR-12"
+    ],
+    "technique": "State",
+    "priority": "P1",
+    "expected": "บันทึก/ตั้งชื่อ/แก้ไขคง ID และ metadata; ลบแล้วหาไม่พบ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-TRIP-SLIDES-01",
+    "title": "deck contains overview, all days and continuation slides without dropping stops",
+    "file": "backend/trip-slides.test.cjs",
+    "requirements": [
+      "FR-05"
+    ],
+    "rules": [
+      "BR-08"
+    ],
+    "technique": "Happy",
+    "priority": "P1",
+    "expected": "6จุด2วันได้4สไลด์; ครบทุกจุดและวันอิสระ",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  },
+  {
+    "id": "TC-TRIP-SLIDES-02",
+    "title": "export escapes user text and rejects non-image photo sources",
+    "file": "backend/trip-slides.test.cjs",
+    "requirements": [
+      "FR-05"
+    ],
+    "rules": [
+      "BR-08"
+    ],
+    "technique": "Security/API",
+    "priority": "P1",
+    "expected": "escape script/img/b และไม่ใส่ javascript: เป็นรูป",
+    "oracle": "R: invariant/math; numerical policy assumptions A require owner confirmation",
+    "checkpoint": "immediately after operation; server case also after server restart",
+    "execution": "Node; browser not run"
+  }
+]
